@@ -29,12 +29,12 @@ try {
     echo "\nSearching petfinder for dogs...";
     $requestType = 'shelter.getPets';
     $requestArgs = array(
-        'id'     => 'SHELTER ID',
+        'id'     => 'GA236',
         'status' => 'A',
         'count'  => 10,
         'format' => 'json');
-    $key         = 'API KEY';
-    $secret      = 'API SECRET';
+    $key         = 'fa41b4ae99b2a3a246f1cb2c20fc64de';
+    $secret      = '18445f3b947f89effca2997eb17e4e14';
     $url         = new URL($requestType, $requestArgs, $key, $secret);
     $result      = new Request();
     $result->setUrl($url);
@@ -42,7 +42,7 @@ try {
 
     echo "\nAnd done.  Lets see who we found.\n----------------\n";
     array_walk($result->getPets(), function($pet) {
-        stringData = array($pet->name,
+        $stringData = array($pet->name,
                             $pet->mix === 'no' ? '' : 'mixed ',
                             $pet->sex === 'M' ? 'male' : 'female');
         vprintf("%s is a %s%s.\n", $stringData);
