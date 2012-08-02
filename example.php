@@ -22,16 +22,16 @@ The library requires at least PHP 5.3, tested on 5.3.13
 MOTD;
 
 spl_autoload_register(function($class) {
-	require(implode('/', array_slice(explode('\\', $class), 1)) . '.php');
+	require(implode('/', explode('\\', $class)) . '.php');
 });
 
 try {
 	echo "\nSearching petfinder for dogs...";
 	$requestType = 'shelter.getPets';
 	$requestArgs = array(
-		'id' => 'SHELTER ID',
+		'id'     => 'SHELTER ID',
 		'status' => 'A',
-		'count' => 10,
+		'count'  => 10,
 		'format' => 'json');
 	$key         = 'API KEY';
 	$secret      = 'API SECRET';
@@ -60,3 +60,5 @@ try {
 	   . $ex->getMessage()
 	   . "\n";
 }
+
+echo "\nScript complete\n";
