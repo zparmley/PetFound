@@ -1,49 +1,40 @@
 <?php
-namespace Petfound;
-
 use Petfound\Exception as PetfoundException;
 use Petfound\API\URL;
 use Petfound\API\Request;
 
-$motd = <<<MOD
+echo <<<MOTD
 =======================
-EXAMPLE SCRIPT INVOKING PETFINDER API CODE SAMPLES
+EXAMPLE SCRIPT INVOKING "PETFOUND" PETFINDER API LIBRARY
 BY: Zachary Parmley
 
-This script just invokes the associated PetfinderAPI classes 
-and uses them to display a list of dogs from a dachsund rescue
-organization I work with.
+This script just invokes the associated API classes 
+and uses them to display a list of dogs from a shelter
+on petfinder.
 
-The script is intended to be run with at least PHP 5.3
+You'll have to configure the SHELTER ID, API KEY and API SECRET.
 
-The interesting/OO code is in the classes themselves.
+The library requires at least PHP 5.3, tested on 5.3.13
+
+
 =======================
 
-MOD;
-
-// echo $motd;
-// function __autoload($classname) {
-// 	var_dump($classname);die();
-// 	$classfile = substr($classname, strrpos($classname, '_') + 1) . '.php';
-// 	require_once($classfile);
-// }
-
+MOTD;
 
 spl_autoload_register(function($class) {
 	require(implode('/', array_slice(explode('\\', $class), 1)) . '.php');
 });
 
-
 try {
 	echo "\nSearching petfinder for dogs...";
 	$requestType = 'shelter.getPets';
 	$requestArgs = array(
-		'id' => 'SHELTER ID HERE',
+		'id' => 'SHELTER ID',
 		'status' => 'A',
 		'count' => 10,
 		'format' => 'json');
-	$key         = 'API KEY HERE';
-	$secret      = 'API SECRET HERE';
+	$key         = 'API KEY';
+	$secret      = 'API SECRET';
 	$url         = new URL($requestType, $requestArgs, $key, $secret);
 	$result      = new Request();
 	$result->setUrl($url);
@@ -59,11 +50,13 @@ try {
 
 	echo "\n\n";
 } catch (PetfoundException $ex) {
-	echo "There seems to have been a problem with the way this example was set up.  That, or the Petfinder API is down. Darn.\n\nError message:\n\t";
-	echo $ex->getMessage();
+	echo 'There seems to have been a problem with the way this example was set up.  That, or the Petfinder '
+	   . "API is down. Darn.\n\nError message:\n\t"
+	   . $ex->getMessage();
 } catch (\Exception $ex) {
 	echo 'There was a PHP Exception thrown during execution of the example. It was intended to be run on '
 	   . 'PHP 5.3 and should work with just the default modules.  For whatever reason, it did not work this '
-	   . "time...\n\nError message:\n\t";
-	echo "\n" . $ex->getMessage();
+	   . "time...\n\nError message:\n\t"
+	   . $ex->getMessage()
+	   . "\n";
 }

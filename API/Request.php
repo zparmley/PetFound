@@ -5,9 +5,9 @@ use Petfound\Exception as PetfoundException;
 use Petfound\Pet;
 
 /**
- * Request
+ * Petfound\API\Request Takes a url and requests data from the petfinder api, the parses into a more usable data type
  *
- * @package PetfinderAPI
+ * @package Petfound\API
  * @author  Zachary Parmley
  **/
 class Request {

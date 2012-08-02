@@ -3,9 +3,9 @@ namespace Petfound\API;
 
 use Petfound\Exception as PetfoundException;
 /**
- * ZP_Petfinder_URL
+ * Petfound\API\URL
  *
- * @package Petfound
+ * @package Petfound\API
  * @author  Zachary Parmley
  **/
 class URL {

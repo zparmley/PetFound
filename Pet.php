@@ -2,7 +2,7 @@
 namespace Petfound;
 
 /**
- * Pet represents a pet returned from the API parsed into a more useable format
+ * Petfound\Pet represents a pet returned from the API parsed into a more useable format
  *
  * @package Petfound
  * @author  Zachary Parmley

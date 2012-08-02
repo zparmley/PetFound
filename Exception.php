@@ -1,9 +1,9 @@
 <?php
 namespace Petfound;
 /**
- * Exception raised by Petfound library
+ * Petfound\Exception
  *
- * @package PetfinderAPI
+ * @package Petfound
  * @author  Zachary Parmley
  **/
 class Exception extends \Exception {}
